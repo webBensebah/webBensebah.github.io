@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Portfolio Tree</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            margin: 0 10px;
+            width: 250px;
+        }
+
+        .item {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .item:hover {
+            background-color: #e0e0e0;
+        }
+
+        .item.active {
+            background-color: blue;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="column" id="column1">
+        <!-- Matière list -->
+        <div class="item" onclick="showColumn('SAE1', 2)">SAE 1</div>
+        <div class="item" onclick="showColumn('SAE2', 2)">SAE 2</div>
+        <div class="item" onclick="showColumn('SAE3', 2)">SAE 3</div>
+        <div class="item" onclick="showColumn('SAE4', 2)">SAE 4</div>
+        <div class="item" onclick="showColumn('SAE5', 2)">SAE 5</div>
+        <div class="item" onclick="showColumn('SAE6', 2)">SAE 6</div>
+        <div class="item" onclick="showColumn('SAE7', 2)">SAE 7</div>
+        <div class="item" onclick="showColumn('PROJETTUTORE1', 2)">PROJET TUTORE 1</div>
+        <div class="item" onclick="showColumn('PROJETTUTORE2', 2)">PROJET TUTORE 2</div>
+        <div class="item" onclick="showColumn('PROJETTUTORE3', 2)">PROJET TUTORE 3</div>
+        <div class="item" onclick="showColumn('VIEDELENTREPRISE2', 2)">VIE DE L'ENTREPRISE 2</div> 
+        <div class="item" onclick="showColumn('MAINTENANCE2', 2)">MAINTENANCE 2</div>
+        <div class="item" onclick="showColumn('RESEAU2', 2)">RESEAU 2</div>
+        <div class="item" onclick="showColumn('ESE2', 2)">ESE 2</div>
+        <div class="item" onclick="showColumn('ANGLAIS', 2)">ANGLAIS </div>
+        <div class="item" onclick="showColumn('ANGLAIS2', 2)">ANGLAIS 2</div>
+        <div class="item" onclick="showColumn('CULTUREETCOMMUNICATION', 2)">CULTURE ET COMMUNICATION</div>
+        <div class="item" onclick="showColumn('CULTUREETCOMMUNICATION2', 2)">CULTURE ET COMMUNICATION 2</div>
+        <div class="item" onclick="showColumn('PROJETPERSONNELETPROFESSIONNEL', 2)">PROJET PERSONNEL ET PROFESIONNEL</div>
+        <div class="item" onclick="showColumn('PROJETPERSONNELETPROFESSIONNEL2', 2)">PROJET PERSONNEL ET PROFESIONNEL 2</div>
+        <div class="item" onclick="showColumn('ELECTRONIQUE', 2)">ELECTRONIQUE </div>
+        <div class="item" onclick="showColumn('ELECTRONIQUE2', 2)">ELECTRONIQUE 2 </div>
+        <div class="item" onclick="showColumn('INFORMATIQUEINDUSTRIELLE', 2)">INFORMATIQUE INDUSTRIELLE</div>
+        <div class="item" onclick="showColumn('INFORMATIQUEINDUSTRIELLE2', 2)">INFORMATIQUE INDUSTRIELLE 2</div>
+        <div class="item" onclick="showColumn('MATHEMATIQUES', 2)">MATHEMATIQUES</div>
+        <div class="item" onclick="showColumn('MATHEMATIQUES2', 2)">MATHEMATIQUES 2</div>
+        <div class="item" onclick="showColumn('PORTFOLIO', 2)">PORTFOLIO</div>
+        <div class="item" onclick="showColumn('PORTFOLIO2', 2)">PORTFOLIO 2</div>
+        <div class="item" onclick="showColumn('PHYSIQUE', 2)">PHYSIQUE</div>
+        <div class="item" onclick="showColumn('PHYSIQUE2', 2)">PHYSIQUE 2</div>
+        <div class="item" onclick="showColumn('ENERGIE', 2)">ENERGIE</div>
+        <div class="item" onclick="showColumn('ENERGIE2', 2)">ENERGIE 2</div>
+        <div class="item" onclick="showColumn('AUTOMATIQUE2', 2)">AUTOMATIQUE 2</div>
+
+        
+
+
+    </div>
+    <div class="column hidden" id="column2">
+        <!-- Activities list (will be populated based on SAE selection) -->
+        <!-- SAE 1 Activities -->
+        <div class="item" data-parent="SAE1" onclick="showColumn('Metronome', 3)">Métronome</div>
+        <!-- SAE 2 Activities -->
+        <div class="item" data-parent="SAE2" onclick="showColumn('Arduino', 3)">Arduino conception d’un code pour le contrôle d’un robot</div>
+        <!--  other activities for other SAEs here -->
+        <div class="item" data-parent="SAE3" onclick="showColumn('ROBOTCOMMANDEPARLESONS', 3)">Robot commandé par le son</div>
+        <div class="item" data-parent="SAE4" onclick="showColumn('LAMPE', 3)">Lampe</div>
+        <div class="item" data-parent="SAE5" onclick="showColumn('THERMOMETREELECTRONIQUE', 3)">Thermomètre électronique </div>
+        <div class="item" data-parent="SAE6" onclick="showColumn('ROBOTSUIVEURDELIGNE2', 3)">Robot suiveur de ligne 2.0</div>
+        <div class="item" data-parent="SAE7" onclick="showColumn('ROBOTMILIEUCONINE', 3)">Robot suiveur de ligne en miieu confiné</div>
+        <!-- PROJET TUTORE Activities -->
+        <div class="item" data-parent="PROJETTUTORE1" onclick="showColumn('SECURITE', 3)">Conception d'un système de sécurité</div>
+        <div class="item" data-parent="PROJETTUTORE2" onclick="showColumn('SUITEDUPROJET1', 3)">Suite du projet 1</div>
+        <div class="item" data-parent="PROJETTUTORE3" onclick="showColumn('HACKTHON', 3)">Projet hackathon </div>
+        <!-- MATIRES COURS -->
+        <div class="item" data-parent="ANGLAIS" onclick="showColumn('ECRITAN', 3)">Ecrit</div>
+        <div class="item" data-parent="ANGLAIS" onclick="showColumn('ORALAN', 3)">Oral</div>
+        <div class="item" data-parent="ANGLAIS2" onclick="showColumn('ECRIT2AN', 3)">Ecrit</div>
+        <div class="item" data-parent="CULTUREETCOMMUNICATION" onclick="showColumn('EXPOSECU', 3)">Exposé</div>
+        <div class="item" data-parent="CULTUREETCOMMUNICATION" onclick="showColumn('ORTHOGRAPHECU', 3)">Orthographe</div>
+        <div class="item" data-parent="CULTUREETCOMMUNICATION" onclick="showColumn('CULTUREGENERALECU', 3)">Culture générale</div>
+
+        <div class="item" data-parent="CULTUREETCOMMUNICATION2" onclick="showColumn('EXPOSE2CU', 3)">Exposé 2</div>
+        <div class="item" data-parent="CULTUREETCOMMUNICATION2" onclick="showColumn('ORTHOGRAPHE2CU', 3)">Orthographe 2</div>
+        <div class="item" data-parent="CULTUREETCOMMUNICATION2" onclick="showColumn('CULTUREGENERALE2CU', 3)">Culture générale 2</div>
+
+        <div class="item" data-parent="VIEDELENTREPRISE2" onclick="showColumn('ORALVI', 3)">Oral 2</div>
+        <div class="item" data-parent="VIEDELENTREPRISE2" onclick="showColumn('PREPVI', 3)">Préparation d'une réunion en entreprise 2</div>
+
+        <div class="item" data-parent="PROJETPERSONNELETPROFESSIONNEL" onclick="showColumn('LETTREDEMOTIVATIONPR', 3)">Lettre de motivation</div>
+        <div class="item" data-parent="PROJETPERSONNELETPROFESSIONNEL" onclick="showColumn('ENTRETIENPR', 3)">Entretien</div>
+
+        <div class="item" data-parent="PROJETPERSONNELETPROFESSIONNEL2" onclick="showColumn('LETTREDEMOTIVATION2PR', 3)">Lettre de motivation 2</div>
+        <div class="item" data-parent="PROJETPERSONNELETPROFESSIONNEL2" onclick="showColumn('ENTRETIEN2PR', 3)">Entretien 2</div>
+
+        <div class="item" data-parent="ELECTRONIQUE" onclick="showColumn('CALCULSEL', 3)">Calculs</div>
+        <div class="item" data-parent="ELECTRONIQUE" onclick="showColumn('CONNAISSANCEEL', 3)">Connaissance du cours</div>
+        <div class="item" data-parent="ELECTRONIQUE2" onclick="showColumn('CALCULS2EL', 3)">Calculs 2</div>
+        <div class="item" data-parent="ELECTRONIQUE2" onclick="showColumn('CONNAISSANCE2EL', 3)">Connaissance du cours 2</div>
+
+        <div class="item" data-parent="INFORMATIQUEINDUSTRIELLE" onclick="showColumn('PROGRAMMATIONIN', 3)">Programmation</div>
+        <div class="item" data-parent="INFORMATIQUEINDUSTRIELLE" onclick="showColumn('AUTOMATISMEIN', 3)">Automatisme</div>
+        <div class="item" data-parent="INFORMATIQUEINDUSTRIELLE2" onclick="showColumn('PROGRAMMATION2IN', 3)">Programmation 2</div>
+        
+        <div class="item" data-parent="MATHEMATIQUES" onclick="showColumn('CONNAISSANCEMA', 3)">Connaissance du cours</div>
+        <div class="item" data-parent="MATHEMATIQUES" onclick="showColumn('CALCULSMA', 3)">Calculs</div>
+        <div class="item" data-parent="MATHEMATIQUES2" onclick="showColumn('CONNAISSANCE2MA', 3)">Connaissance du cours 2</div>
+        <div class="item" data-parent="MATHEMATIQUES2" onclick="showColumn('CALCULS2MA', 3)">Calculs 2</div>
+
+        <div class="item" data-parent="PORTFOLIO" onclick="showColumn('EXCELPO', 3)">EXCEL</div>
+        <div class="item" data-parent="PORTFOLIO2" onclick="showColumn('EXCEL2PO', 3)">EXCEL 2</div>
+
+        <div class="item" data-parent="PHYSIQUE" onclick="showColumn('CALCULSPH', 3)">Calculs</div>
+        <div class="item" data-parent="PHYSIQUE" onclick="showColumn('CONNAISSANCEPH', 3)">Connaissance du cours</div>
+        <div class="item" data-parent="PHYSIQUE2" onclick="showColumn('CALCULS2PH', 3)">Calculs 2</div>
+        <div class="item" data-parent="PHYSIQUE2" onclick="showColumn('CONNAISSANCE2PH', 3)">Connaissance du cours 2</div>
+
+        <div class="item" data-parent="ENERGIE" onclick="showColumn('CALCULSEN', 3)">Calculs</div>
+        <div class="item" data-parent="ENERGIE" onclick="showColumn('CONNAISSANCEEN', 3)">Connaissance du cours</div>
+        <div class="item" data-parent="ENERGIE" onclick="showColumn('GRAPHIQUEEN', 3)">Graphiques</div>
+        <div class="item" data-parent="ENERGIE" onclick="showColumn('FORMATIONEN', 3)">Formation</div>
+        <div class="item" data-parent="ENERGIE2" onclick="showColumn('CALCULS2EN', 3)">Calculs 2</div>
+        <div class="item" data-parent="ENERGIE2" onclick="showColumn('CONNAISSANCE2EN', 3)">Connaissance du cours 2</div>
+
+        <div class="item" data-parent="MAINTENANCE2" onclick="showColumn('CONNAISSANCE2MAI', 3)">Connaissance du cours 2</div>
+        <div class="item" data-parent="MAINTENANCE2" onclick="showColumn('CALCULS2MAI', 3)">Calculs 2</div>
+        <div class="item" data-parent="MAINTENANCE2" onclick="showColumn('GRAPHIQUE2MAI', 3)">Graphiques 2</div>
+
+        <div class="item" data-parent="RESEAU2" onclick="showColumn('CONNAISSANCE2RE', 3)">Connaissance du cours 2</div>
+
+        <div class="item" data-parent="ESE2" onclick="showColumn('CONNAISSANCE2ES', 3)">Connaissance du cours 2</div>
+        <div class="item" data-parent="ESE2" onclick="showColumn('CALCULS2ES', 3)">Calculs 2</div>
+
+        <div class="item" data-parent="AUTOMATIQUE2" onclick="showColumn('CONNAISSANCE2AU', 3)">Connaissance du cours 2</div>
+        <div class="item" data-parent="AUTOMATIQUE2" onclick="showColumn('CALCULS2AU', 3)">Calculs 2</div>
+    </div>
+    <div class="column hidden" id="column3">
+        <!-- Competencies and evaluations (will be populated based on activity selection) -->
+        <!-- SAE 1 > Métronome Competencies -->
+        <div class="item" data-parent="Metronome">Soudage - Note: 8/10</div>
+        <div class="item" data-parent="Metronome">Câblage et utilisations des différents outils - Note: 7/10</div>
+        <div class="item" data-parent="Metronome">Compréhension d’un schéma électronique - Note: 9/10</div>
+        <div class="item" data-parent="Metronome">Qualité du compte rendu - Note: 7/10</div>
+        <div class="item" data-parent="Metronome">Calculs théoriques et concordance avec la réalité - Note: 8/10</div>
+        <div class="item" data-parent="Metronome">Travail de groupe - Note: 9/10</div>
+        <!-- SAE 2 > Arduino Competencies -->
+        <div class="item" data-parent="Arduino">Qualité du code (Fond/forme/Fautes etc) - Note: 9/10</div>
+        <div class="item" data-parent="Arduino">Câblage et utilisations des différents outils - Note: 8/10</div>
+        <div class="item" data-parent="Arduino">Résolution des multiples exercices - Note: 8/10</div>
+        <div class="item" data-parent="Arduino">Qualité du compte rendu - Note: 7/10</div>
+        <div class="item" data-parent="Arduino">Fonctionnement du code(le robot fonctionne?) - Note: 10/10</div>
+        <div class="item" data-parent="Arduino">Travail de groupe - Note: 10/10</div>
+        <!-- SAE 3 >  ----------- -->
+        <div class="item" data-parent="ROBOTCOMMANDEPARLESONS">compréhension d’un schéma électronique - Note: 9/10</div>
+        <div class="item" data-parent="ROBOTCOMMANDEPARLESONS">Câblage et utilisations des différents outils - Note: 7/10</div>
+        <div class="item" data-parent="ROBOTCOMMANDEPARLESONS">Calculs théoriques et concordance avec la réalité - Note: 8/10</div>
+        <div class="item" data-parent="ROBOTCOMMANDEPARLESONS">Qualité du compte rendu - Note: 7/10</div>
+        <div class="item" data-parent="ROBOTCOMMANDEPARLESONS">Fonctionnement du robot - Note: 10/10</div>
+        <div class="item" data-parent="ROBOTCOMMANDEPARLESONS">Travail de groupe - Note: 8/10</div>
+        <!-- SAE 4 >  ----------- -->
+        <div class="item" data-parent="LAMPE">Calculs théoriques et concordance avec la réalité - Note: 9/10</div>
+        <div class="item" data-parent="LAMPE">Simualtions sur PSIM - Note: 10/10</div>
+        <div class="item" data-parent="LAMPE">Montage sur plaque à trous - Note: 9/10</div>
+        <div class="item" data-parent="LAMPE">Typon - Note: 9.5/10</div>
+        <div class="item" data-parent="LAMPE">Qualité du compte rendu - Note: 7/10</div>
+        <div class="item" data-parent="LAMPE">Fonctionnement du projet - Note: 10/10</div>
+        <!-- SAE 5 >  ----------- -->
+        <div class="item" data-parent="THERMOMETREELECTRONIQUE">Calculs théoriques et concordance avec la réalité - Note: 9/10</div>
+        <div class="item" data-parent="THERMOMETREELECTRONIQUE">Fonctionnement du code - Note: 10/10</div>
+        <div class="item" data-parent="THERMOMETREELECTRONIQUE">Montage sur plaque à trous - Note: 10/10</div>
+        <div class="item" data-parent="THERMOMETREELECTRONIQUE">Travail de groupe - Note: 10/10</div>
+        <div class="item" data-parent="THERMOMETREELECTRONIQUE">Qualité du compte rendu - Note: 7/10</div>
+        <div class="item" data-parent="THERMOMETREELECTRONIQUE">Fonctionnement du projet - Note: 10/10</div>
+        <!-- SAE 6 >  ----------- -->
+        <div class="item" data-parent="ROBOTSUIVEURDELIGNE2">Calculs théoriques et concordance avec la réalité - Note: 10/10</div>
+        <div class="item" data-parent="ROBOTSUIVEURDELIGNE2">Câblage et utilisations des différents outils - Note: 10/10</div>
+        <div class="item" data-parent="ROBOTSUIVEURDELIGNE2">Circuit logique combinatoire - Note: 10/10</div>
+        <div class="item" data-parent="ROBOTSUIVEURDELIGNE2">Travail de groupe - Note: 8/10</div>
+        <div class="item" data-parent="ROBOTSUIVEURDELIGNE2">Qualité du compte rendu - Note: 6/10</div>
+        <div class="item" data-parent="ROBOTSUIVEURDELIGNE2">Fonctionnement du projet - Note: 10/10</div>
+        <!-- SAE 7 >  ----------- -->
+        <div class="item" data-parent="ROBOTMILIEUCONINE">Fonctionnement du code - Note: 8.5/10</div>
+        <div class="item" data-parent="ROBOTMILIEUCONINE">Travail de groupe - Note: 10/10</div>
+        <div class="item" data-parent="ROBOTMILIEUCONINE">Calculs théoriques et concordance avec la réalité - Note: 8/10</div>
+        <div class="item" data-parent="ROBOTMILIEUCONINE">Qualité des compte rendu - Note: 8/10</div>
+        <div class="item" data-parent="ROBOTMILIEUCONINE">Fonctionnement du projet - Note: 9/10</div>
+        <!-- PROJET TUTORE1 >  ----------- -->
+        <div class="item" data-parent="SECURITE">Analyse d’un système électronique complexe - Note: 9/10</div>
+        <div class="item" data-parent="SECURITE">Simulation - Note: 10/10</div>
+        <div class="item" data-parent="SECURITE">Câblage et utilisations des différents outils - Note: 7/10</div>
+        <div class="item" data-parent="SECURITE">dépannage de multiples problèmes - Note: 9/10</div>
+        <div class="item" data-parent="SECURITE">Travail de groupe - Note: 10/10</div>
+        <!-- PROJET TUTORE2 >  ----------- -->
+        <div class="item" data-parent="SUITEDUPROJET1">Analyse d’un système électronique complexe - Note: 10/10</div>
+        <div class="item" data-parent="SUITEDUPROJET1">Câblage et utilisations des différents outils - Note: 8/10</div>
+        <div class="item" data-parent="SUITEDUPROJET1">dépannage de multiples problèmes - Note: 10/10</div>
+        <div class="item" data-parent="SUITEDUPROJET1">Fonctionnement du projet - Note: 10/10</div>
+        <div class="item" data-parent="SUITEDUPROJET1">Travail de groupe - Note: 10/10</div>
+        <!-- PROJET TUTORE3 >  ----------- -->
+        <div class="item" data-parent="HACKTHON">Compréhension d'une documentation technique - Note: 8/10</div>
+        <div class="item" data-parent="HACKTHON">Câblage et utilisations des différents outils - Note: 9/10</div>
+        <div class="item" data-parent="HACKTHON">Dépannage de multiples problèmes - Note: 10/10</div>
+        <div class="item" data-parent="HACKTHON">Fonctionnement du projet - Note: 10/10</div>
+        <div class="item" data-parent="HACKTHON">Fonctionnement du code - Note: 10/10</div>
+        <div class="item" data-parent="HACKTHON">Travail de groupe - Note: 10/10</div>
+        <!-- ANGLAIS>  ----------- -->
+        <div class="item" data-parent="ECRITAN">Compréhension - Note: 8/10</div>
+        <div class="item" data-parent="ECRITAN">Expression - Note: 8/10</div>
+        <div class="item" data-parent="ORALAN">Compréhension - Note: 7/10</div>
+        <div class="item" data-parent="ORALAN">Expression - Note: 8/10</div>
+        <!-- CULTURE ET COM>  ----------- -->
+        <div class="item" data-parent="EXPOSECU">Expression orale - Note: 7/10</div>
+        <div class="item" data-parent="EXPOSECU">Recherche documentaire - Note: 9/10</div>
+        <div class="item" data-parent="EXPOSECU">Diaporama - Note: 8/10</div>
+        <div class="item" data-parent="ORTHOGRAPHECU">Amélioration sur les corrections d'orthographes - Note: 8/10</div>
+        <div class="item" data-parent="CULTUREGENERALECU">Connaisances acquises - Note: 10/10</div>        
+        <!-- PP>  ----------- -->
+        <div class="item" data-parent="LETTREDEMOTIVATIONPR">Argumentation - Note: 8/10</div>
+        <div class="item" data-parent="LETTREDEMOTIVATIONPR">Expression écrite - Note: 8/10</div>
+        <div class="item" data-parent="ENTRETIENPR">Techniques d'entretien - Note: 9/10</div>
+        <!-- ELEC>  ----------- -->
+        <div class="item" data-parent="CALCULSEL">Compréhension et réussites des exercices  - Note: 8/10</div>
+        <div class="item" data-parent="CONNAISSANCEEL">Savoir utliser certaines formules, connaitre des procédés de résolutions d'exos…- Note: 10/10</div>
+        <!-- II>  ----------- -->
+        <div class="item" data-parent="PROGRAMMATIONIN">Code - Note: 7.5/10</div>
+        <div class="item" data-parent="PROGRAMMATIONIN">Schéma - Note: 8/10</div>
+        <div class="item" data-parent="PROGRAMMATIONIN">Jeu test - Note: 10/10</div>     
+        <div class="item" data-parent="AUTOMATISMEON">Code - Note: 8/10</div>     
+        <div class="item" data-parent="AUTOMATISMEIN">test - Note: 9/10</div>     
+        <!-- MATH>  ----------- -->
+        <div class="item" data-parent="CONNAISSANCEMA">Savoir utliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 5/10</div>
+        <div class="item" data-parent="CALCULSMA">Compréhension et réussites des exercices  - Note: 5/10</div>
+        <!-- PORTFOLIO>  ----------- -->
+        <div class="item" data-parent="EXCELPO">Utilisation d'excel - Note: 10/10</div>
+        <div class="item" data-parent="EXCELPO">Propreté du portfolio(organisation…) - Note: 10/10</div>
+        <div class="item" data-parent="EXCELPO">Aspect complet du portfolio - Note: 9.5/10</div> 
+        <!-- PORTFOLIO2>  ----------- -->
+        <div class="item" data-parent="EXCEL2PO">Utilisation d'excel - Note: 10/10</div>
+        <div class="item" data-parent="EXCEL2PO">Propreté du portfolio(organisation…) - Note: 10/10</div>
+        <div class="item" data-parent="EXCEL2PO">Aspect complet du portfolio - Note: 9.5/10</div>         
+        <!-- pyhsique>  ----------- -->
+        <div class="item" data-parent="CONNAISSANCEPH">Savoir utliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 6/10</div>
+        <div class="item" data-parent="CALCULSPH">Compréhension et réussites des exercices  - Note: 6/10</div>
+        <!-- ENER>  ----------- -->
+        <div class="item" data-parent="CALCULSEN">Compréhension et réussites des exercices - Note: 6/10</div>
+        <div class="item" data-parent="GRAPHIQUEEN">Graphiques - Note: 8/10</div>
+        <div class="item" data-parent="CONNAISSANCEEN">Savoir utliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 7/10</div> 
+        <div class="item" data-parent="FORMATIONEN">Examen B1V - Note: 8/10</div> 
+        <!-- ANGLAIS2>  ----------- -->
+        <div class="item" data-parent="ECRIT2AN">Compréhension - Note: 7/10</div> 
+        <!-- CULT2>  ----------- -->
+        <div class="item" data-parent="EXPOSE2CU">Expression orale - Note: 7/10</div>
+        <div class="item" data-parent="EXPOSE2CU">Recherche documentaire - Note: 9/10</div> 
+        <div class="item" data-parent="EXPOSE2CU">Diaporama - Note: 8/10</div> 
+        <div class="item" data-parent="ORTHOGRAPHE2CU">Amélioration sur les corrections d'orthographes - Note: 4/10</div> 
+        <div class="item" data-parent="CULTUREGENERALE2CU">Connaissances acquises  - Note: 7/10</div> 
+        <!-- VIEENTREPRISE>  ----------- -->
+        <div class="item" data-parent="ORALVI">Présentation pour un recrutement - Note: 7.5/10</div>
+        <div class="item" data-parent="PREPVI">Diaporama, mail, préparation générale de la réunion - Note: 6.5/10</div>
+        <!-- MATH2>  ----------- -->
+        <div class="item" data-parent="CONNAISSANCE2MA">Savoir utiliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 8.5/10</div> 
+        <div class="item" data-parent="CALCULS2MA">Compréhension et réussites des exercices  - Note: 8/10</div> 
+        <!-- PP2>  ----------- -->
+        <div class="item" data-parent="LETTREDEMOTIVATION2PR">Argumentation - Note: 7.5/10</div>
+        <div class="item" data-parent="LETTREDEMOTIVATION2PR">Expression écrite - Note: 8/10</div> 
+        <div class="item" data-parent="ENTRETIEN2PR">Trouver un stage  - Note: 7/10</div> 
+         <!-- AUTOMATIQUE>  ----------- -->
+         <div class="item" data-parent="CONNAISSANCE2AU">Savoir utiliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 5.5/10</div>
+         <div class="item" data-parent="CALCULS2AU">Compréhension et réussites des exercices  - Note: 5/10</div> 
+        <!-- II2>  ----------- -->
+        <div class="item" data-parent="PROGRAMMATION2IN">Code - Note: 8/10</div>
+        <div class="item" data-parent="PROGRAMMATION2IN">Câblage - Note: 10/10</div>          
+        <div class="item" data-parent="PROGRAMMATION2IN">Compréhension du cours - Note: 10/10</div> 
+        <!-- ELEC2>  ----------- -->
+        <div class="item" data-parent="CALCULS2EL">Calculs  - Note: 4/10</div>
+        <div class="item" data-parent="CONNAISSANCE2EL">Savoir utiliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 5/10</div>          
+        <!-- ENER2>  ----------- -->
+        <div class="item" data-parent="CALCULS2EN">Calculs  - Note: 5.5/10</div>
+        <div class="item" data-parent="CONNAISSANCE2EN">Savoir utiliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 5/10</div>     
+        <!-- PHY2>  ----------- -->
+        <div class="item" data-parent="CALCULS2PH">Calculs  - Note: 7/10</div>
+        <div class="item" data-parent="CONNAISSANCE2PH">Savoir utiliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 8/10</div>   
+        <!-- MAINT2>  ----------- -->
+        <div class="item" data-parent="CONNAISSANCE2MAI">Comprendre et connaître les différents types des maintenance - Note: 8/10</div>
+        <div class="item" data-parent="GRAPHIQUE2MAI">Savoir tracer un graphique pour connaître quels machines faut-ilt réparer en 1er - Note: 7.5/10</div>
+        <div class="item" data-parent="CALCULS2MAI">Compréhension et réussites des exercices - Note: 8/10</div>
+        <!-- RESEAU2>  ----------- -->
+        <div class="item" data-parent="CONNAISSANCE2RE">Utilisation des différents logiciels - Note: 8/10</div>
+        <div class="item" data-parent="CONNAISSANCE2RE">Connaissances générales du cours (types de résaux, différentes couches …) - Note: 7/10</div>
+        <!-- ESE2>  ----------- -->
+        <div class="item" data-parent="CALCULS2ES">Compréhension et réussites des exercices - Note: 8/10</div>
+        <div class="item" data-parent="CONNAISSANCE2ESE">Savoir utiliser certaines formules, connaitre des procédés de résolutions d'exos… - Note: 10/10</div>
+    </div>
+    <script>
+        function showColumn(parentId, targetColumnIndex) {
+            // Remove active class from siblings of the clicked item
+            const clickedItem = event.target;
+            const parentColumn = clickedItem.parentElement;
+            const siblings = parentColumn.querySelectorAll('.item');
+            siblings.forEach(item => item.classList.remove('active'));
+
+            // Add active class to clicked item
+            clickedItem.classList.add('active');
+
+            // Hide all columns from targetColumnIndex onward
+            for (let i = targetColumnIndex; i <= 3; i++) {
+                const column = document.getElementById(`column${i}`);
+                column.classList.add('hidden');
+                const children = column.querySelectorAll('.item');
+                children.forEach(child => child.classList.add('hidden'));
+            }
+
+            // Show the target column
+            const targetColumn = document.getElementById(`column${targetColumnIndex}`);
+            targetColumn.classList.remove('hidden');
+
+            // Show the children of the clicked item
+            const children = targetColumn.querySelectorAll(`[data-parent="${parentId}"]`);
+            children.forEach(child => {
+                child.classList.remove('hidden');
+                child.style.marginTop = `${clickedItem.offsetTop}px`;
+            });
+        }
+    </script>
+</body>
+</html>
